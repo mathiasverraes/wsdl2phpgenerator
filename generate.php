@@ -3,6 +3,8 @@
  * @package Wsdl2PhpGenerator
  */
 
+error_reporting(E_ALL);
+
 /**
  * Gettext should not be required - Thanks jeichhor
  */
