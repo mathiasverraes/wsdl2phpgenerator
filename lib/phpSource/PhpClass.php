@@ -218,7 +218,7 @@ class PhpClass extends PhpElement
 
     if (array_key_exists($name, $this->constants))
     {
-      throw new Exception('A constant of the name ('.$name.') does already exist.');
+     // throw new Exception('A constant of the name ('.$name.') does already exist.');
     }
 
     $this->constants[$name] = $value;
