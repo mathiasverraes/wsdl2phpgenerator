@@ -14,6 +14,8 @@ require_once dirname(__FILE__).'/Type.php';
  */
 require_once dirname(__FILE__).'/Variable.php';
 
+require_once dirname(__FILE__).'/../lib/Wsdl2PhpException.php';
+
 /**
  * ComplexType
  *
@@ -43,13 +45,13 @@ class ComplexType extends Type
 
   /**
    * Implements the loading of the class object
-   * @throws Exception if the class is already generated(not null)
+   * @throws Wsdl2PhpException if the class is already generated(not null)
    */
   protected function generateClass()
   {
     if ($this->class != null)
     {
-      throw new Exception("The class has already been generated");
+      throw new Wsdl2PhpException("The class has already been generated");
     }
 
     $config = Generator::getInstance()->getConfig();

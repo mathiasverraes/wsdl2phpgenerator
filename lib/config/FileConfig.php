@@ -132,7 +132,7 @@ class FileConfig implements IConfig
    * Returns the value attached to key or throw an exception
    * @param string $key
    * @return string
-   * @throws Exception If the value does not exist in the config
+   * @throws Wsdl2PhpException If the value does not exist in the config
    */
   public function get($key)
   {
@@ -142,7 +142,7 @@ class FileConfig implements IConfig
     }
     else
     {
-      throw new Exception('Trying to get a nonexisting value!');
+      throw new Wsdl2PhpException('Trying to get a nonexisting value!');
     }
   }
 
@@ -165,7 +165,7 @@ class FileConfig implements IConfig
   /**
    * Loads the config file if the file exists else throws an exception.
    *
-   * @throws Exception If the file is invalid
+   * @throws Wsdl2PhpException If the file is invalid
    */
   private function load()
   {
@@ -184,7 +184,7 @@ class FileConfig implements IConfig
         $arr = explode($this->separator, $line, $this->limit);
         if (count($arr) != $this->limit)
         {
-          throw new Exception('Invalid config file');
+          throw new Wsdl2PhpException('Invalid config file');
         }
         else
         {
@@ -196,7 +196,7 @@ class FileConfig implements IConfig
     }
     else
     {
-      throw new Exception('File does not exist!');
+      throw new Wsdl2PhpException('File does not exist!');
     }
   }
 

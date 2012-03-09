@@ -6,8 +6,6 @@
 /**
  * Include the needed files
  */
-require_once 'PHPUnit/Framework.php';
-
 require_once dirname(__FILE__).'/../../../lib/cli/Flag.php';
 
 /**
@@ -54,7 +52,7 @@ class FlagTest extends PHPUnit_Framework_TestCase
     $this->object->addAlias('-j');
     $this->assertEquals(4, count($this->object->getAliases()));
 
-    $this->setExpectedException('Exception');
+    $this->setExpectedException('Wsdl2PhpException');
     $this->object->addAlias('-k');
   }
 
@@ -64,7 +62,7 @@ class FlagTest extends PHPUnit_Framework_TestCase
   public function testAddAlias2()
   {
     $this->object->addAlias('-g');
-    $this->setExpectedException('Exception');
+    $this->setExpectedException('Wsdl2PhpException');
     $this->object->addAlias('-g');
   }
 
@@ -92,7 +90,7 @@ class FlagTest extends PHPUnit_Framework_TestCase
   public function testToString()
   {
     $this->object = new Flag('-f', 'Flag');
-    $this->assertEquals('-f'."t"."t"."t"."t".'Flag'.PHP_EOL, strval($this->object));
+    $this->assertEquals('-f                                       Flag'.PHP_EOL, strval($this->object));
     $this->assertNotEquals('', strval($this->object));
   }
 }

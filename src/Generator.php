@@ -15,6 +15,7 @@ require_once dirname(__FILE__).'/Pattern.php';
 require_once dirname(__FILE__).'/DocumentationManager.php';
 require_once dirname(__FILE__).'/Service.php';
 require_once dirname(__FILE__).'/OutputManager.php';
+require_once dirname(__FILE__).'/../lib/Wsdl2PhpException.php';
 
 // Php code classes
 require_once dirname(__FILE__).'/../lib/phpSource/PhpFile.php';
@@ -90,7 +91,7 @@ class Generator
 
     if (self::$instance != null)
     {
-      throw new Exception('wsdl2phpGenerator is only supposed to be constructed once. Check your code!');
+      throw new Wsdl2PhpException('wsdl2phpGenerator is only supposed to be constructed once. Check your code!');
     }
 
     self::$instance = $this;
@@ -133,7 +134,7 @@ class Generator
     }
     catch(SoapFault $e)
     {
-      throw new Exception('Error connectiong to to the wsdl. Error: '.$e->getMessage());
+      throw new Wsdl2PhpException('Error connectiong to to the wsdl. Error: '.$e->getMessage());
     }
 
     $this->log(_('Loading the DOM'));
@@ -177,7 +178,7 @@ class Generator
       else
       {
         // invalid function call
-        throw new Exception('Invalid function call: '.$function);
+        throw new Wsdl2PhpException('Invalid function call: '.$function);
       }
 
       $this->log(_('Loading function ').$function);
@@ -282,7 +283,7 @@ class Generator
   /**
    * Save all the loaded classes to the configured output dir
    *
-   * @throws Exception If no service is loaded
+   * @throws Wsdl2PhpException If no service is loaded
    *
    * @access private
    */
@@ -292,7 +293,7 @@ class Generator
 
     if ($service == null)
     {
-      throw new Exception('No service loaded');
+      throw new Wsdl2PhpException('No service loaded');
     }
 
     $output = new OutputManager($this->config);

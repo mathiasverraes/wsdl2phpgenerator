@@ -135,7 +135,7 @@ class PhpFile
   {
     if ($this->classExists($class->getIdentifier()))
     {
-      throw new Exception('A class of the name ('.$class->getIdentifier().') does already exist.');
+      throw new Wsdl2PhpException('A class of the name ('.$class->getIdentifier().') does already exist.');
     }
 
     $this->classes[$class->getIdentifier()] = $class;
@@ -151,7 +151,7 @@ class PhpFile
   {
     if ($this->functionExists($function->getIdentifier()))
     {
-      throw new Exception('A function of the name ('.$function->getIdentifier().') does already exist.');
+      throw new Wsdl2PhpException('A function of the name ('.$function->getIdentifier().') does already exist.');
     }
 
     $this->functions[$function->getIdentifier()] = $function;

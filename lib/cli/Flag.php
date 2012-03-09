@@ -79,12 +79,12 @@ class Flag
   {
     if (in_array($alias, $this->aliases))
     {
-      throw new Exception('Flag ('.$alias.') is already a alias for '.$this->name.'!');
+      throw new Wsdl2PhpException('Flag ('.$alias.') is already a alias for '.$this->name.'!');
     }
 
     if (count($this->aliases) >= $this->maxNumAliases)
     {
-      throw new Exception('The maximum number of aliases have been reached');
+      throw new Wsdl2PhpException('The maximum number of aliases have been reached');
     }
 
     $this->aliases[] = $alias;

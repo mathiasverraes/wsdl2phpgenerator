@@ -9,6 +9,8 @@
  */
 require_once dirname(__FILE__).'/Type.php';
 
+require_once dirname(__FILE__).'/../lib/Wsdl2PhpException.php';
+
 /**
  * Enum represents a simple type with enumerated values
  *
@@ -38,13 +40,13 @@ class Enum extends Type
 
   /**
    * Implements the loading of the class object
-   * @throws Exception if the class is already generated(not null)
+   * @throws Wsdl2PhpException if the class is already generated(not null)
    */
   protected function generateClass()
   {
     if ($this->class != null)
     {
-      throw new Exception("The class has already been generated");
+      throw new Wsdl2PhpException("The class has already been generated");
     }
 
     $config = Generator::getInstance()->getConfig();
@@ -79,7 +81,7 @@ class Enum extends Type
    * Otherwise it only checks so the value is not null
    *
    * @param mixed $value The value to add
-   * @throws InvalidArgumentException if the value doesn'nt fit in the restriction
+   * @throws Wsdl2Php_InvalidArgumentException if the value doesn'nt fit in the restriction
    */
   public function addValue($value)
   {
@@ -87,7 +89,7 @@ class Enum extends Type
     {
       if (is_string($value) == false)
       {
-        throw new InvalidArgumentException('The value('.$value.') is not string but the restriction demands it');
+        throw new Wsdl2Php_InvalidArgumentException('The value('.$value.') is not string but the restriction demands it');
       }
     }
     elseif ($this->datatype == 'integer')
@@ -100,14 +102,14 @@ class Enum extends Type
 
       if (is_int($value) == false)
       {
-        throw new InvalidArgumentException('The value('.$value.') is not int but the restriction demands it');
+        throw new Wsdl2Php_InvalidArgumentException('The value('.$value.') is not int but the restriction demands it');
       }
     }
     else
     {
       if ($value == null)
       {
-        throw new InvalidArgumentException('Value('.$value.') is null');
+        throw new Wsdl2Php_InvalidArgumentException('Value('.$value.') is null');
       }
     }
 

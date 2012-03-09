@@ -8,6 +8,8 @@
  */
 require_once dirname(__FILE__).'/Type.php';
 
+require_once dirname(__FILE__).'/../lib/Wsdl2PhpException.php';
+
 /**
  * Pattern represents a simple type with restriction and a pattern
  *
@@ -39,14 +41,14 @@ class Pattern extends Type
    * Implements the loading of the class object
    * Always returns null because the pattern is not used as a class
    *
-   * @throws Exception if the class is already generated(not null)
+   * @throws Wsdl2PhpException if the class is already generated(not null)
    * @return null
    */
   protected function generateClass()
   {
     if ($this->class != null)
     {
-      throw new Exception("The class has already been generated");
+      throw new Wsdl2PhpException("The class has already been generated");
     }
 
     return null;

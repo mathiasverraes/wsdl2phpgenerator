@@ -6,8 +6,6 @@
 /**
  * Include the needed files
  */
-require_once 'PHPUnit/Framework.php';
-
 require_once dirname(__FILE__).'/../../../lib/cli/Cli.php';
 
 /**
@@ -45,7 +43,7 @@ class CliTest extends PHPUnit_Framework_TestCase
   public function testAddFlag()
   {
     $this->object->addFlag('-f', 'test', true, true);
-    $this->setExpectedException('Exception');
+    $this->setExpectedException('Wsdl2PhpException');
     $this->object->addFlag('-f', 'test', true, false);
   }
 
@@ -57,7 +55,7 @@ class CliTest extends PHPUnit_Framework_TestCase
     $this->object->addFlag('-f', 'test', true, true);
     $this->object->addAlias('-f', '--bar');
     $this->object->addAlias('-f', '--foo');
-    $this->setExpectedException('Exception');
+    $this->setExpectedException('Wsdl2PhpException');
     $this->object->addFlag('--foo', 'test', true, false);
   }
 
@@ -69,7 +67,7 @@ class CliTest extends PHPUnit_Framework_TestCase
     $this->object->addFlag('-f', 'test', true, true);
     $this->object->addAlias('-f', '--bar');
     $this->object->addAlias('-f', '--foo');
-    $this->setExpectedException('Exception');
+    $this->setExpectedException('Wsdl2PhpException');
     $this->object->addAlias('-f', '--foo');
   }
 
@@ -81,7 +79,7 @@ class CliTest extends PHPUnit_Framework_TestCase
     $this->object->addFlag('-f', 'test', true, true);
     $this->object->addAlias('-f', '--foo');
     $this->object->addAlias('-f', '--bar');
-    $this->setExpectedException('Exception');
+    $this->setExpectedException('Wsdl2PhpException');
     $this->object->addAlias('-q', '--foo');
   }
 

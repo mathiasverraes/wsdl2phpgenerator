@@ -73,7 +73,7 @@ class Cli extends CliParser
    * @param bool $isBool If the flag has to have a parameter
    * @param bool $reqired If the flag is required
    *
-   * @throws Exception If the flag is already used
+   * @throws Wsdl2PhpException If the flag is already used
    *
    * @return void
    */
@@ -82,7 +82,7 @@ class Cli extends CliParser
     // Check main name
     if (array_key_exists($flag, $this->acceptedFlags))
     {
-      throw new Exception('Flag ('.$flag.') is already mapped!');
+      throw new Wsdl2PhpException('Flag ('.$flag.') is already mapped!');
     }
 
     // Check all aliases
@@ -92,7 +92,7 @@ class Cli extends CliParser
       {
         if($alias == $flag)
         {
-          throw new Exception('Flag ('.$flag.') is already mapped!');
+          throw new Wsdl2PhpException('Flag ('.$flag.') is already mapped!');
         }
       }
     }
@@ -111,7 +111,7 @@ class Cli extends CliParser
    * @param string $flag
    * @param string $alias
    *
-   * @throws Exception Throws exception if the alias is used already or if the flag isn't mapped
+   * @throws Wsdl2PhpException Throws exception if the alias is used already or if the flag isn't mapped
    *
    * @return void
    */
@@ -126,7 +126,7 @@ class Cli extends CliParser
         {
           if($a == $alias)
           {
-            throw new Exception('Flag ('.$alias.') is already mapped!');
+            throw new Wsdl2PhpException('Flag ('.$alias.') is already mapped!');
           }
         }
       }
@@ -135,7 +135,7 @@ class Cli extends CliParser
     }
     else
     {
-      throw new Exception('Flag ('.$flag.') is not mapped!');
+      throw new Wsdl2PhpException('Flag ('.$flag.') is not mapped!');
     }
   }
 

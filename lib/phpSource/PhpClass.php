@@ -200,7 +200,7 @@ class PhpClass extends PhpElement
   {
     if (strlen($value) == 0)
     {
-      throw new Exception('No value supplied');
+      throw new Wsdl2PhpException('No value supplied');
     }
 
     // If no name is supplied use the value as name
@@ -212,13 +212,13 @@ class PhpClass extends PhpElement
       }
       else
       {
-        throw new Exception('No name supplied');
+        throw new Wsdl2PhpException('No name supplied');
       }
     }
 
     if (array_key_exists($name, $this->constants))
     {
-     // throw new Exception('A constant of the name ('.$name.') does already exist.');
+     // throw new Wsdl2PhpException('A constant of the name ('.$name.') does already exist.');
     }
 
     $this->constants[$name] = $value;
@@ -236,7 +236,7 @@ class PhpClass extends PhpElement
   {
     if ($this->variableExists($variable->getIdentifier()))
     {
-      throw new Exception('A variable of the name ('.$variable->getIdentifier().') does already exist.');
+      throw new Wsdl2PhpException('A variable of the name ('.$variable->getIdentifier().') does already exist.');
     }
 
     $this->variables[$variable->getIdentifier()] = $variable;
@@ -254,7 +254,7 @@ class PhpClass extends PhpElement
   {
     if ($this->functionExists($function->getIdentifier()))
     {
-      throw new Exception('A function of the name ('.$function->getIdentifier().') does already exist.');
+      throw new Wsdl2PhpException('A function of the name ('.$function->getIdentifier().') does already exist.');
     }
 
     $this->functions[$function->getIdentifier()] = $function;

@@ -6,8 +6,6 @@
 /**
  * Include the needed files
  */
-require_once 'PHPUnit/Framework.php';
-
 require_once dirname(__FILE__).'/../../../lib/config/FileConfig.php';
 
 /**
@@ -76,7 +74,7 @@ class FileConfigTest extends PHPUnit_Framework_TestCase
   public function testInvalidFile()
   {
     $this->object = new FileConfig($this->fileName, true, '$');
-    $this->setExpectedException('Exception');
+    $this->setExpectedException('Wsdl2PhpException');
     $this->object->get('woho');
   }
 
@@ -86,7 +84,7 @@ class FileConfigTest extends PHPUnit_Framework_TestCase
   public function testNoFile()
   {
     $this->object = new FileConfig('');
-    $this->setExpectedException('Exception');
+    $this->setExpectedException('Wsdl2PhpException');
     $this->object->get('woho');
   }
 
@@ -96,7 +94,7 @@ class FileConfigTest extends PHPUnit_Framework_TestCase
   public function testGet()
   {
     $this->assertEquals('bar', $this->object->get('foo'));
-    $this->setExpectedException('Exception');
+    $this->setExpectedException('Wsdl2PhpException');
     $this->object->get('woho');
   }
 

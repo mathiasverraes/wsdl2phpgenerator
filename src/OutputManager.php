@@ -9,6 +9,8 @@
  */
 require_once dirname(__FILE__).'/../lib/phpSource/PhpFile.php';
 
+require_once dirname(__FILE__).'/../lib/Wsdl2PhpException.php';
+
 /**
  * Manages the output of php files from the generator
  *
@@ -103,7 +105,7 @@ class OutputManager
    * Sets the output directory, creates it if needed
    * This must be called before saving a file
    *
-   * @throws Exception If the dir can't be created and dont already exists
+   * @throws Wsdl2PhpException If the dir can't be created and dont already exists
    */
   private function setOutputDirectory()
   {
@@ -116,7 +118,7 @@ class OutputManager
     {
       if(mkdir($outputDirectory, 0777, true) == false)
       {
-        throw new Exception('Could not create output directory and it does not exist!');
+        throw new Wsdl2PhpException('Could not create output directory and it does not exist!');
       }
     }
 
