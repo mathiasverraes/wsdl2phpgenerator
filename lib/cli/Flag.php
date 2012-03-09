@@ -63,7 +63,8 @@ class Flag
    */
   public function  __toString()
   {
-    return implode(', ', array_merge(array($this->name), $this->aliases)).str_pad('', $this->maxNumAliases - count($this->aliases), "t").$this->description.PHP_EOL;
+  	$text = implode(', ', array_merge(array($this->name), $this->aliases));
+    return str_pad($text, 41, " ").$this->description.PHP_EOL;
   }
 
   /**
